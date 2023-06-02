@@ -1,5 +1,5 @@
 ---
-title: "ExampleAskChatGPT"
+title: "How to use ChatGPT"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{ExampleAskChatGPT}
@@ -14,6 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Getting started
 ```{r setup}
 library(chatgptR)
+OPENAI_API_KEY="your api key..."
+Sys.setenv(OPENAI_API_KEY = OPENAI_API_KEY)
+Sys.setenv(OPENAI_RETURN_LANGUAGE = "englsih") #korean
+Sys.setenv(OPENAI_VERBOSE=FALSE) #or TRUE
 ```
+
