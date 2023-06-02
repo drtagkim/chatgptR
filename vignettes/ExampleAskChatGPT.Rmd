@@ -23,3 +23,12 @@ Sys.setenv(OPENAI_RETURN_LANGUAGE = "englsih") #korean
 Sys.setenv(OPENAI_VERBOSE=FALSE) #or TRUE
 ```
 
+# Example 1
+```{r eval=FALSE}
+while(TRUE) {
+  x=readline("chatGPT>")
+  if(x=="exit") break
+  cat(ask_chatgpt(x))
+}
+```
+
