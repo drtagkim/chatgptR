@@ -16,12 +16,8 @@ gpt_get_completions <- function(prompt, system_content = NULL,conversation_file=
   if (as.logical(Sys.getenv("OPENAI_VERBOSE", TRUE))) {
     cat(literal(prompt=prompt)$echo_user_input_info)
   }
-  if (grepl(literal()$gpt3_5, model)) {
-    messages = message_factory(prompt,system_content,conversation_file)
-    post_res = send_data_to_openai_chat(params,messages,openai_api_key)
-  } else {
-    post_res = send_data_to_openai_completion(params,prompt,openai_api_key)
-  }
+  messages = message_factory(prompt,system_content,conversation_file)
+  post_res = send_data_to_openai_chat(params,messages,openai_api_key)
   if (!post_res$status_code %in% literal()$normal_status) {
     stop(content(post_res))
   }
