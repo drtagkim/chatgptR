@@ -28,3 +28,7 @@ Imports:
   utils,
   rvest,
   jsonlite
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
