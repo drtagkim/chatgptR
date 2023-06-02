@@ -14,7 +14,7 @@ gpt_get_completions <- function(prompt, system_content = NULL,conversation_file=
   }
   params = get_default_params()
   if (as.logical(Sys.getenv("OPENAI_VERBOSE", TRUE))) {
-    cat(literal()$echo_user_input_info)
+    cat(literal(prompt=prompt)$echo_user_input_info)
   }
   if (grepl(literal()$gpt3_5, model)) {
     messages = message_factory(prompt,system_content,conversation_file)
