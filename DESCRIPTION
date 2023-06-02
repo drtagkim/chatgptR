@@ -2,7 +2,7 @@ Package: chatgptR
 Type: Package
 Title: Interface programs for using ChatGPT
 Version: 0.0.7
-Authors@R: c(
+Authors: c(
     person(
       give = "Taekyung", family="Kim", role=c("aut"),
       email="kimtk@kw.ac.kr"
