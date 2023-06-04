@@ -37,7 +37,7 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
   if(update & !is.null(history_file)) {
     mssg_added1=list(list(role="user",content=question))
     mssg_added2=list(list(role="assistant",content=result))
-    mssg_updated=append_list(mssg_previous,mssg_added1,mssg_added2)
+    mssg_updated=append_lists(mssg_previous,mssg_added1,mssg_added2)
     write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
   }
   result
