@@ -49,3 +49,7 @@ ask_chatgpt("승무에 대해 알려줘",
             history_file = "test_history_03.json",
             update = TRUE)
 ```
+
+You may want to read OpenAI API documents.
+
+[ref1] https://platform.openai.com/docs/api-reference/chat/create "OpenAI DOC"
