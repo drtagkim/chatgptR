@@ -11,7 +11,7 @@
 #'
 #' @export
 #'
-ask_chatgpt <- function(question,context=NULL,history_file=NULL) {
+ask_chatgpt <- function(question,context=NULL,history_file=NULL,update=TRUE) {
   if(is.null(history_file)) {
     result=parse_response(gpt_get_completions(question,context))
   } else {
@@ -29,7 +29,8 @@ ask_chatgpt <- function(question,context=NULL,history_file=NULL) {
         mssg_updated=append(mssg_previous,mssg_added1)
         mssg_updated=append(mssg_previous,mssg_added2)
       }
-      write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
+      if(update)
+        write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
     } else {
       result=parse_response(gpt_get_completions(question,context))
       mssg_added1=mssg1=list(list(role="user",content=question))
@@ -41,7 +42,8 @@ ask_chatgpt <- function(question,context=NULL,history_file=NULL) {
       } else {
         mssg_updated=append(mssg_added1,mssg_added2)
       }
-      write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
+      if(update)
+        write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
     }
   }
   result
