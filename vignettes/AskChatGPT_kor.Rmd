@@ -1,0 +1,63 @@
+---
+title: "AskChatGPT_kor"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{AskChatGPT_kor}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## 소개
+ChatGPT API를 R에서 사용하기 위해 작성했습니다. 
+
+만든이: 김태경 교수(kimtk@kw.ac.kr)
+
+## 사용하기
+
+### 라이브러리 부르기
+```{r,eval=FALSE}
+library(chatgptR)
+```
+
+### 환경설정하기
+OpenAI에서 API 키를 먼저 받아야 합니다. 계정 관리에 들어가서 API 키를 받아오기를 바랍니다. 다음 내용을 env.R 파일로 저장하고 필요할 때 source('env.R')로 사용하면 좋겠습니다.
+
+
+```{r,eval=FALSE}
+OPENAI_API_KEY="your api key here"
+Sys.setenv(OPENAI_API_KEY = OPENAI_API_KEY)
+Sys.setenv(OPENAI_RETURN_LANGUAGE = "korean") #korean
+Sys.setenv(OPENAI_VERBOSE=FALSE) #or TRUE
+Sys.setenv(OPENAI_TEMPERATURE = 0.5)
+```
+
+### 사용하기
+#### 기본 사용법
+```{r, eval=FALSE}
+ask_chatgpt("hi")
+```
+
+### 이전 대화 내용 활용하기(대화 맥락 사용)
+```{r, eval=FALSE}
+ask_chatgpt("승무는 무엇인가?",
+            history_file = "dance_info.json",
+            update=FALSE)
+```
+
+만약 대화 내용을 업데이트 하려면 update=TRUE라고 합니다.
+
+### 지식을 직접 설명하기
+```{r, eval=FALSE}
+ask_chatgpt("hi",context = "인사를 하면 농담을 같이 한다.")
+```
+
+### 지식 데이터를 제공하기
+```{r, eval=FALSE}
+ask_chatgpt("승무에 대해 알려줘",
+            knowledge_dir = "knowledge",
+            context = "친절히 설명하기",
+            history_file = "test_history_03.json",
+            update = TRUE)
+```
+
+
