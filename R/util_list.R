@@ -14,3 +14,18 @@ learn_knoweldge <- function(dir_name) {
   }
   x
 }
+
+#' @export
+transform_excel_data_to_json <- function(input_exel,output_json) {
+  suppressMessages({
+    dt=read_excel(input_exel,col_names = FALSE)
+  })
+  user <- dt[[1]]
+  assistant <- dt[[2]]
+  user_dt <- tibble(role="user",content=user)
+  assistant_dt <- tibble(role="assistant",content=assistant)
+  1:nrow(user_dt) %>%
+    map_dfr(function(x) {
+      bind_rows(user_dt[x,],assistant_dt[x,])
+    }) %>% toJSON() %>% write(output_json)
+}

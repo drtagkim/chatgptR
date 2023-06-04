@@ -27,7 +27,8 @@ Imports:
   shiny,
   utils,
   rvest,
-  jsonlite
+  jsonlite,
+  readxl
 Suggests: 
     knitr,
     rmarkdown
