@@ -18,29 +18,33 @@ ask_chatgpt <- function(question,context=NULL,history_file=NULL,update=TRUE) {
     if(file.exists(history_file)) {
       result=teach_chatgpt(question,context,history_file)
       mssg_previous=c(fromJSON(history_file,simplifyDataFrame = FALSE))
-      mssg_added1=mssg1=list(list(role="user",content=question))
-      mssg_added2=mssg1=list(list(role="assistant",content=result))
+      mssg_added1=list(list(role="user",content=question))
+      mssg_added2=list(list(role="assistant",content=result))
       if(!is.null(context)) {
         mssg_context=list(list(role="system",content=context))
-        mssg_updated=append(mssg_previous,mssg_context)
-        mssg_updated=append(mssg_updated,mssg_added1)
-        mssg_updated=append(mssg_updated,mssg_added2)
+        mssg_updated=append_lists(msg_previoius,mssg_context,mssg_added1,mssg_added2)
+        #mssg_updated=append(mssg_previous,mssg_context)
+        #mssg_updated=append(mssg_updated,mssg_added1)
+        #mssg_updated=append(mssg_updated,mssg_added2)
       } else {
-        mssg_updated=append(mssg_previous,mssg_added1)
-        mssg_updated=append(mssg_previous,mssg_added2)
+        mssg_updated=append_lists(mssg_previous,mssg_added1,mssg_added2)
+        #mssg_updated=append(mssg_previous,mssg_added1)
+        #mssg_updated=append(mssg_previous,mssg_added2)
       }
       if(update)
         write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
     } else {
       result=parse_response(gpt_get_completions(question,context))
-      mssg_added1=mssg1=list(list(role="user",content=question))
-      mssg_added2=mssg1=list(list(role="assistant",content=result))
+      mssg_added1=list(list(role="user",content=question))
+      mssg_added2=list(list(role="assistant",content=result))
       if(!is.null(context)) {
         mssg_context=list(list(role="system",content=context))
-        mssg_updated=append(mssg_context,mssg_added1)
-        mssg_updated=append(mssg_updated,mssg_added2)
+        #mssg_updated=append(mssg_context,mssg_added1)
+        #mssg_updated=append(mssg_updated,mssg_added2)
+        mssg_updated=append_list(mssg_context,mssg_added1,mssg_added2)
       } else {
-        mssg_updated=append(mssg_added1,mssg_added2)
+        mssg_updated=append_list(mssg_added1,mssg_added2)
+        #mssg_updated=append(mssg_added1,mssg_added2)
       }
       if(update)
         write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
