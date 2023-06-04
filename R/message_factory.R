@@ -14,7 +14,7 @@ message_factory <- function(user_prompt,system_content=NULL,file=NULL) {
     )
   } else {
     mssg=list(
-      list(role="system",content=return_language),
+      list(role="system",content=system_content),
       list(role = "user", content = user_prompt)
     )
   }
