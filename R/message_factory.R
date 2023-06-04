@@ -1,4 +1,4 @@
-message_factory <- function(user_prompt,system_content=NULL,conversation=NULL) {
+message_factory <- function(user_prompt,context=NULL,conversation=NULL) {
   # if(is.null(system_content)) {
   #   system_content = "You are a helpful assistant. "
   # } else {
@@ -9,7 +9,7 @@ message_factory <- function(user_prompt,system_content=NULL,conversation=NULL) {
   #   return_language <- paste0(system_content,"You return all your replies in ", return_language, ".")
   # }
   append_lists(
-    system_content,
+    context,
     conversation,
     list(list(role="user",content=user_prompt))
   )
