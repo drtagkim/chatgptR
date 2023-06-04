@@ -33,7 +33,7 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
   result=parse_response(gpt_get_completions(
     question,
     system_content=context,
-    conversation_file=append_lists(mssg_knowledge,mssg_previous)))
+    conversation=append_lists(mssg_knowledge,mssg_previous)))
   if(update & !is.null(history_file)) {
     mssg_added1=list(list(role="user",content=question))
     mssg_added2=list(list(role="assistant",content=result))

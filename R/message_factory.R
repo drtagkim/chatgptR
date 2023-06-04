@@ -1,4 +1,4 @@
-message_factory <- function(user_prompt,system_content=NULL,file=NULL) {
+message_factory <- function(user_prompt,system_content=NULL,conversation=NULL) {
   # if(is.null(system_content)) {
   #   system_content = "You are a helpful assistant. "
   # } else {
@@ -8,18 +8,23 @@ message_factory <- function(user_prompt,system_content=NULL,file=NULL) {
   # if (nchar(return_language) > 0) {
   #   return_language <- paste0(system_content,"You return all your replies in ", return_language, ".")
   # }
-  if(is.null(system_content)) {
-    mssg=list(
-      list(role = "user", content = user_prompt)
-    )
-  } else {
-    mssg=list(
-      list(role="system",content=system_content),
-      list(role = "user", content = user_prompt)
-    )
-  }
-  if(!is.null(file)) {
-    mssg=c(fromJSON(file,simplifyDataFrame = FALSE),mssg)
-  }
-  return(mssg)
+  append_lists(
+    system_content,
+    conversation,
+    list(list(role="user",content=user_prompt))
+  )
+  # if(is.null(system_content)) {
+  #   mssg=list(
+  #     list(role = "user", content = user_prompt)
+  #   )
+  # } else {
+  #   mssg=list(
+  #     list(role="system",content=system_content),
+  #     list(role = "user", content = user_prompt)
+  #   )
+  # }
+  # if(!is.null(file)) {
+  #   mssg=c(fromJSON(file,simplifyDataFrame = FALSE),mssg)
+  # }
+  # return(mssg)
 }
