@@ -15,6 +15,9 @@ learn_knoweldge <- function(dir_name) {
   x
 }
 
+#' Transform Excel conversation data to JSON data
+#' @param input_excel Excel file with an extension (i.e., .xlsx)
+#' @param output_json Output JSON file with an extension (i.e., .json)
 #' @export
 transform_excel_data_to_json <- function(input_exel,output_json) {
   suppressMessages({

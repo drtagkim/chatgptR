@@ -1,13 +1,3 @@
-#' Get GPT Completions Endpoint
-#'
-#' @param prompt The prompt to generate completions for.
-#' @param system_content system contents, default = NULL
-#' @param conversation_file conversation data, default = NULL
-#' @param openai_api_key OpenAI's API key.
-#'
-#' @importFrom httr add_headers content content_type_json POST
-#' @importFrom jsonlite toJSON
-#'
 gpt_get_completions <- function(prompt, context = NULL,conversation=NULL,openai_api_key = Sys.getenv("OPENAI_API_KEY")) {
   if (nchar(openai_api_key) == 0) {
     stop(literal()$no_api)
