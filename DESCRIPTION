@@ -23,7 +23,8 @@ Depends:
   stringr,
   jsonlite,
   utils,
-  readxl
+  readxl,
+  purrr
 Imports:
   clipr,
   httr,
@@ -31,5 +32,6 @@ Imports:
   stringr,
   jsonlite,
   utils,
-  readxl
+  readxl,
+  purrr
 VignetteBuilder: knitr
