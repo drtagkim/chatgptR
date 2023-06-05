@@ -16,20 +16,20 @@ BugReports: https://github.com/drtagkim/chatgpt/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
+Depends:
+  clipr,
+  httr,
+  dplyr,
+  stringr,
+  jsonlite,
+  utils,
+  readxl
 Imports:
   clipr,
   httr,
   dplyr,
   stringr,
   jsonlite,
-  miniUI,
-  rstudioapi,
-  shiny,
   utils,
-  rvest,
-  jsonlite,
   readxl
-Suggests: 
-    knitr,
-    rmarkdown
 VignetteBuilder: knitr
