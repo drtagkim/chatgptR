@@ -16,6 +16,9 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
   if(is.null(history_file)) {
     mssg_previous=NULL
   } else {
+    if(!file.exists(history_file)) {
+      write("[\n\n]",history_file)
+    }
     mssg_previous=c(fromJSON(history_file,simplifyDataFrame = FALSE))
   }
   #
