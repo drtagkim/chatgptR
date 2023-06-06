@@ -17,7 +17,10 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
     mssg_previous=NULL
   } else {
     if(!file.exists(history_file)) {
-      write("[\n\n]",history_file)
+      file_path=history_file
+      file_con=file(file_path,'w',encoding='utf-8')
+      writeLines("[\n\n]",file_con)
+      close(file_con)
     }
     mssg_previous=c(fromJSON(history_file,simplifyDataFrame = FALSE))
   }
@@ -41,7 +44,11 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
     mssg_added1=list(list(role="user",content=question))
     mssg_added2=list(list(role="assistant",content=result))
     mssg_updated=append_lists(mssg_previous,mssg_added1,mssg_added2)
-    write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
+    file_path=history_file
+    file_con=file(file_path,'w',encoding='utf-8')
+    writeLines(toJSON(mssg_updated,auto_unbox = TRUE),file_con)
+    close(file_con)
+    #write(toJSON(mssg_updated,auto_unbox = TRUE),file=history_file)
   }
   result
 }
