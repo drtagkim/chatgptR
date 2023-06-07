@@ -54,13 +54,13 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
 }
 
 
-teach_chatgpt <- function(question,context=NULL,file=NULL) {
-  if(is.null(file)) {
-    parse_response(gpt_get_completions(question,context))
-  } else {
-    parse_response(gpt_get_completions(question,context,conversation_file = file))
-  }
-}
+# teach_chatgpt <- function(question,context=NULL,file=NULL) {
+#   if(is.null(file)) {
+#     parse_response(gpt_get_completions(question,context))
+#   } else {
+#     parse_response(gpt_get_completions(question,context,conversation_file = file))
+#   }
+# }
 
 #' Performing prompt engineering tasks
 #' @param q question
