@@ -7,5 +7,5 @@
 pe_edit_eng_writing()
 }
 \description{
-Prompt Enginnering Function - Editing a paragraph in academic styling
+Editing a paragraph in academic styling
 }

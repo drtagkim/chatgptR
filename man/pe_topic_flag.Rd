@@ -7,5 +7,5 @@
 pe_topic_flag()
 }
 \description{
-Prompt Enginnering Function - Checking the inclusion of keywords
+Checking the inclusion of keywords
 }

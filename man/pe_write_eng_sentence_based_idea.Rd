@@ -7,5 +7,5 @@
 pe_write_eng_sentence_based_idea()
 }
 \description{
-Prompt Enginnering Function - Sentence Writer Based on Supplied Keywords
+Sentence Writer Based on Supplied Keywords
 }

@@ -1,5 +1,7 @@
 #' Prompt Enginnering Function - Sentence Writer Based on Supplied Keywords
 #'
+#' Sentence Writer Based on Supplied Keywords
+#'
 #' @export
 pe_write_eng_sentence_based_idea <- function() {
   paste0("I will give you a keyword and you will write 1 sentence based on it. ",
@@ -7,6 +9,8 @@ pe_write_eng_sentence_based_idea <- function() {
 }
 
 #' Prompt Enginnering Function - Checking the inclusion of keywords
+#'
+#' Checking the inclusion of keywords
 #'
 #' @export
 pe_topic_flag <- function() {
@@ -19,6 +23,8 @@ pe_topic_flag <- function() {
 }
 
 #' Prompt Enginnering Function - Editing a paragraph in academic styling
+#'
+#' Editing a paragraph in academic styling
 #'
 #' @export
 pe_edit_eng_writing <- function() {
