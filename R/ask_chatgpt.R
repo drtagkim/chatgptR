@@ -1,5 +1,7 @@
 #' Ask ChatGPT
 #'
+#' testing
+#'
 #' @param question The question to ask ChatGPT.
 #'
 #' @examples
@@ -63,6 +65,9 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
 # }
 
 #' Performing prompt engineering tasks
+#'
+#'
+#
 #' @param q question
 #' @param pe_list list of prompt_engineering_functions
 #' @param add_req additional requests
