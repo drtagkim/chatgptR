@@ -74,7 +74,8 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
 #' @export
 ask_chatgpt_pe <- function(q,pe_list,add_req="") {
   p=paste0(pe_list,collapse = " ")
-  r=ask_chatgpt(q,context = add_req)
+  p=paste0(p,' ',add_req)
+  r=ask_chatgpt(q,context = p)
   r %>% write_clip()
   r
 }
