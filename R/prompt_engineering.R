@@ -34,12 +34,12 @@ pe_edit_eng_writing <- function() {
          "Answer in English. ")
 }
 
-#' Prompt Enginnering Function - Generate a script for Powerpoint presentation (30 seconds)
+#' Prompt Enginnering Function - Generate a script for Powerpoint presentation
 #'
-#' Generate a script for Powerpoint presentation (30 seconds)
+#' Generate a script for Powerpoint presentation
 #'
 #' @export
-pe_eng_script_writing <- function(seconds=30) {
+pe_eng_script_writing <- function(seconds=20) {
   paste0(
     "Input: words representing ideas and topics",
     "You should translate user input into English first.",
