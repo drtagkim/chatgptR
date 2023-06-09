@@ -33,3 +33,18 @@ pe_edit_eng_writing <- function() {
          "Write in an academic style. For example, suppose you're writing a social science paper. ",
          "Answer in English. ")
 }
+
+#' Prompt Enginnering Function - Generate a script for Powerpoint presentation (30 seconds)
+#'
+#' Generate a script for Powerpoint presentation (30 seconds)
+#'
+#' @export
+pe_edit_eng_writing <- function() {
+  paste0(
+    "Output: English",
+    "Input: words representing ideas and topics",
+    "Output: paragraph containing presentation scripts.",
+    "Length of speaking: 30 seconds",
+    collapse=" "
+  )
+}
