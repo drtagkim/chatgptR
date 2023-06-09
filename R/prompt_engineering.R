@@ -41,10 +41,12 @@ pe_edit_eng_writing <- function() {
 #' @export
 pe_eng_script_writing <- function(seconds=30) {
   paste0(
-    "Output: English sentences",
     "Input: words representing ideas and topics",
-    "Output: paragraph containing presentation scripts.",
-    "Length of speaking:",seconds," seconds",
+    "You should translate user input into English first.",
+    "Output: English paragraph containing presentation scripts.",
+    "Suppose that a human will read it in front of academic audiance.",
+    "Keep in mind that the reading should be finished within specific duration.",
+    "For exmaple, the length of speaking will be:",seconds," seconds",
     collapse=" "
   )
 }
