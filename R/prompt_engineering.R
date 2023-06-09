@@ -39,7 +39,7 @@ pe_edit_eng_writing <- function() {
 #' Generate a script for Powerpoint presentation (30 seconds)
 #'
 #' @export
-pe_edit_eng_writing <- function() {
+pe_eng_script_30s_writing <- function() {
   paste0(
     "Output: English",
     "Input: words representing ideas and topics",
