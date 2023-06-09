@@ -4,7 +4,7 @@
 \alias{chat_script}
 \title{Script Writer}
 \usage{
-chat_script(q)
+chat_script(q, sec = 30)
 }
 \arguments{
 \item{q}{keywords}

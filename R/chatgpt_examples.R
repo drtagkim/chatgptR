@@ -27,7 +27,7 @@ chat_write <- function(q) {
 chat_script <- function(q,sec=30) {
   x=ask_chatgpt_pe(
     q,
-    pe_list=list(pe_eng_script_30s_writing(sec))
+    pe_list=list(pe_eng_script_writing(sec))
   )
   x %>% write_clip()
   x
