@@ -45,6 +45,7 @@ pe_eng_script_writing <- function(seconds=30) {
     "You should translate user input into English first.",
     "Output: English paragraph containing presentation scripts.",
     "Suppose that a human will read it in front of academic audiance.",
+    "The output script is not in start nor in end. It is in the middle of presentatin.",
     "Do not add information that is not provided by a user.",
     "Keep in mind that the reading should be finished within specific duration.",
     "For exmaple, the length of speaking will be:",seconds," seconds",
