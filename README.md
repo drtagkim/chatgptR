@@ -26,7 +26,7 @@ Sys.setenv(OPENAI_TEMPERATURE = 0.5)
 
 #### Basic Usage
 ```{r, eval=FALSE}
-ask_chatgpt("hi")
+ask_chatgpt("hello")
 ```
 
 ### Leverage previous conversations (using conversation context)
