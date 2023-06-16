@@ -9,7 +9,7 @@ ask_chatgpt(
   knowledge_dir = NULL,
   context = NULL,
   history_file = NULL,
-  update = TRUE
+  update = FALSE
 )
 }
 \arguments{

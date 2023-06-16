@@ -2,7 +2,7 @@
 % Please edit documentation in R/prompt_engineering.R
 \name{pe_eng_script_writing}
 \alias{pe_eng_script_writing}
-\title{Prompt Enginnering Function - Generate a script for Powerpoint presentation}
+\title{Prompt Engineering Function - Generate a script for Powerpoint presentation}
 \usage{
 pe_eng_script_writing(seconds = 20)
 }
