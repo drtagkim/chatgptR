@@ -42,6 +42,5 @@ transform_excel_data_to_json <- function(input_exel,output_json) {
 #' @export
 compile_prompt <- function(pe_list) {
   p=paste0(pe_list,collapse = " ")
-  p=paste0(p,' ',add_req)
   p
 }
