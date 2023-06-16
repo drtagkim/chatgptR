@@ -32,3 +32,21 @@ chat_script <- function(q,sec=30) {
   x %>% write_clip()
   x
 }
+
+#' Topic checker
+#'
+#' Checking topic and produce results
+#'
+#' @param q Sentence to check
+#' @param topic_keyword string vector, topics
+#'
+#' @export
+chat_topic_check <- function(q,topic_keyword) {
+  x=ask_chatgpt(
+    q,
+    context=compile_prompt(list(pe_topic_flag(),
+              paste0(topic_keyword,collapse = ",")))
+  )
+  x %>% write_clip()
+  x
+}

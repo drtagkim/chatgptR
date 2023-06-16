@@ -54,28 +54,3 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
   }
   result
 }
-
-
-# teach_chatgpt <- function(question,context=NULL,file=NULL) {
-#   if(is.null(file)) {
-#     parse_response(gpt_get_completions(question,context))
-#   } else {
-#     parse_response(gpt_get_completions(question,context,conversation_file = file))
-#   }
-# }
-
-#' #' Performing prompt engineering tasks
-#' #'
-#' #'
-#' #
-#' #' @param q question
-#' #' @param pe_list list of prompt_engineering_functions
-#' #' @param add_req additional requests
-#' #' @export
-#' ask_chatgpt_pe <- function(q,pe_list,add_req="") {
-#'   p=paste0(pe_list,collapse = " ")
-#'   p=paste0(p,' ',add_req)
-#'   r=ask_chatgpt(q,context = p)
-#'   r %>% write_clip()
-#'   r
-#' }

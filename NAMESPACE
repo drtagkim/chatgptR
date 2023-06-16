@@ -2,6 +2,7 @@
 
 export(ask_chatgpt)
 export(chat_script)
+export(chat_topic_check)
 export(chat_write)
 export(compile_prompt)
 export(pe_edit_eng_writing)
