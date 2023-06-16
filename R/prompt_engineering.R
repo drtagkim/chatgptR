@@ -34,7 +34,7 @@ pe_edit_eng_writing <- function() {
          "Answer in English. ")
 }
 
-#' Prompt Enginnering Function - Generate a script for Powerpoint presentation
+#' Prompt Engineering Function - Generate a script for Powerpoint presentation
 #'
 #' Generate a script for Powerpoint presentation
 #'
@@ -50,6 +50,20 @@ pe_eng_script_writing <- function(seconds=20) {
     "Do not add information that is not provided by a user.",
     "Keep in mind that the reading should be finished within specific duration.",
     "For exmaple, the length of speaking will be:",seconds," seconds",
+    collapse=" "
+  )
+}
+
+#' Prompt Engineering Function - Generating a news title in English
+#'
+#' Prompt Engineering Function - Generating a news title in English
+#'
+#'
+#' @export
+pe_eng_title <- function() {
+  paste0(
+    "Make a news title based on the input.",
+    "English output",
     collapse=" "
   )
 }

@@ -66,3 +66,20 @@ chat_topic_check <- function(q,topic_keyword) {
   x %>% write_clip()
   x
 }
+
+#' Title generator
+#'
+#' Title generator
+#'
+#' @param q content
+#'
+#' @export
+chat_title_news <- function(q) {
+  x=ask_chatgpt(
+    q,
+    context=compile_prompt(list(pe_eng_title(),
+              paste0(topic_keyword,collapse = ",")))
+  )
+  x %>% write_clip()
+  x
+}
