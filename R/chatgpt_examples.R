@@ -33,6 +33,22 @@ chat_script <- function(q,sec=30) {
   x
 }
 
+#' Edit writing
+#'
+#' Provides the ability to correct English sentences
+#'
+#' @param q writing content
+#'
+#' @export
+chat_edit_writing <- function(q) {
+  x=ask_chatgpt(
+    q,
+    context=compile_prompt(list(pe_edit_eng_writing()))
+  )
+  x %>% write_clip()
+  x
+}
+
 #' Topic checker
 #'
 #' Checking topic and produce results

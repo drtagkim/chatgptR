@@ -13,7 +13,7 @@
 #'
 #' @export
 #'
-ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NULL,update=TRUE) {
+ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NULL,update=FALSE) {
   #
   if(is.null(history_file)) {
     mssg_previous=NULL
