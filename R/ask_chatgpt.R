@@ -64,18 +64,18 @@ ask_chatgpt <- function(question,knowledge_dir=NULL,context=NULL,history_file=NU
 #   }
 # }
 
-#' Performing prompt engineering tasks
-#'
-#'
-#
-#' @param q question
-#' @param pe_list list of prompt_engineering_functions
-#' @param add_req additional requests
-#' @export
-ask_chatgpt_pe <- function(q,pe_list,add_req="") {
-  p=paste0(pe_list,collapse = " ")
-  p=paste0(p,' ',add_req)
-  r=ask_chatgpt(q,context = p)
-  r %>% write_clip()
-  r
-}
+#' #' Performing prompt engineering tasks
+#' #'
+#' #'
+#' #
+#' #' @param q question
+#' #' @param pe_list list of prompt_engineering_functions
+#' #' @param add_req additional requests
+#' #' @export
+#' ask_chatgpt_pe <- function(q,pe_list,add_req="") {
+#'   p=paste0(pe_list,collapse = " ")
+#'   p=paste0(p,' ',add_req)
+#'   r=ask_chatgpt(q,context = p)
+#'   r %>% write_clip()
+#'   r
+#' }

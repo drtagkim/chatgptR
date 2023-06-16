@@ -32,3 +32,16 @@ transform_excel_data_to_json <- function(input_exel,output_json) {
       bind_rows(user_dt[x,],assistant_dt[x,])
     }) %>% toJSON() %>% write(output_json)
 }
+
+#' Compile prompt engineering functions
+#'
+#' Compile prompt engineering functions
+#'
+#' @param pe_list list of prompt engineering functions
+#'
+#' @export
+compile_prompt <- function(pe_list) {
+  p=paste0(pe_list,collapse = " ")
+  p=paste0(p,' ',add_req)
+  p
+}
