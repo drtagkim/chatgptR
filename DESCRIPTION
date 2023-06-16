@@ -6,6 +6,10 @@ Authors: c(
     person(
       give = "Taekyung", family="Kim", role=c("aut"),
       email="kimtk@kw.ac.kr"
+    ),
+    person(
+      give = "Arum", family="Park", role=c("collaborator"),
+      email="penellope007@gmail.com"
     )
   )
 Maintainer: Taekyung Kim <kimtk@kw.ac.kr>
