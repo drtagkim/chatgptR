@@ -42,8 +42,18 @@ transform_excel_data_to_json <- function(input_exel,output_json) {
 #' @examples
 #' sesison <- tempfile()
 #' create_session_history(session)
-#' ask_chatgpt("Hello!",history_file=session)
-#' # if you want to delete the session temp file, run the following:
+#' ask_chatgpt("Remember following information.",
+#'   history_file = session,
+#'   update = TRUE)
+#' ask_chatgpt("I like an apple.",
+#'             history_file = session,
+#'             update = TRUE)
+#' ask_chatgpt("And, I like an orange.",
+#'             history_file = session,
+#'             update = TRUE)
+#' ask_chatgpt("What are my favorite fruit?",
+#'             history_file = session,
+#'             update = TRUE)
 #' file.remove(session)
 create_session_history <- function(tmp_file) {
   user_dt = tibble(role="user",content="Please be my best assistant.")
