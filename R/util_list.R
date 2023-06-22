@@ -23,14 +23,35 @@ transform_excel_data_to_json <- function(input_exel,output_json) {
   suppressMessages({
     dt=read_excel(input_exel,col_names = FALSE)
   })
-  user <- dt[[1]]
-  assistant <- dt[[2]]
-  user_dt <- tibble(role="user",content=user)
-  assistant_dt <- tibble(role="assistant",content=assistant)
+  user = dt[[1]]
+  assistant = dt[[2]]
+  user_dt = tibble(role="user",content=user)
+  assistant_dt = tibble(role="assistant",content=assistant)
   1:nrow(user_dt) %>%
     map_dfr(function(x) {
       bind_rows(user_dt[x,],assistant_dt[x,])
     }) %>% toJSON() %>% write(output_json)
+}
+
+#' Create Session History
+#'
+#' Create session history
+#'
+#' @param tmp_file temporar file
+#' @export
+#' @examples
+#' sesison <- tempfile()
+#' create_session_history(session)
+#' ask_chatgpt("Hello!",history_file=session)
+#' # if you want to delete the session temp file, run the following:
+#' file.remove(session)
+create_session_history <- function(tmp_file) {
+  user_dt = tibble(role="user",content="Please be my best assistant.")
+  assistant_dt = tibble(role="assistant",content="I'm here to assist you to the best of my abilities!")
+  1:nrow(user_dt) %>%
+    map_dfr(function(x) {
+      bind_rows(user_dt[x,],assistant_dt[x,])
+    }) %>% toJSON() %>% write(tmp_file)
 }
 
 #' Compile prompt engineering functions
