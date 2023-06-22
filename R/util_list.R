@@ -72,6 +72,14 @@ create_session_history <- function(tmp_file) {
 #' @param me (option) your quesiton
 #' @param you (option) answer by GPT
 #' @export
+#' @exmaples
+#' session <- tempfile()
+#' create_session_history(session)
+#' session %>%
+#'   teach_gpt(intent = "Answer anything in one sentence")
+#' ask_chatgpt("What happen if you die?",history_file=session,update=TRUE)
+#' ask_chatgpt("What happen if you die?")
+#' file.remove(session)
 #'
 teach_gpt <- function(tmp_file,intent=NULL,me=NULL,you=NULL) {
   mssg_previous=c(fromJSON(tmp_file,simplifyDataFrame = FALSE))
