@@ -63,7 +63,34 @@ create_session_history <- function(tmp_file) {
       bind_rows(user_dt[x,],assistant_dt[x,])
     }) %>% toJSON() %>% write(tmp_file)
 }
+#' Teach GPT with session
+#'
+#' Teach GPT with session
+#'
+#' @param tmp_file session temporary file
+#' @param intent (option) context information
+#' @param me (option) your quesiton
+#' @param you (option) answer by GPT
+#' @export
+#'
+teach_gpt <- function(tmp_file,intent=NULL,me=NULL,you=NULL) {
+  mssg_previous=c(fromJSON(tmp_file,simplifyDataFrame = FALSE))
+  if(is.null(intent) & is.null(me) & is.null(you)) return()
+  if(!is.null(intent) & is.null(me) & is.null(you)) {
+    mssg_added1=list(list(role="system",content = intent))
+    mssg_updated=append_lists(mssg_previous,mssg_added1)
 
+  }
+  if(is.null(intent) & !is.null(me) & !is.null(you)) {
+    mssg_added1=list(list(role="user",content = me))
+    mssg_added2=list(list(role="assistant",content = you))
+    mssg_updated=append_lists(mssg_previous,mssg_added1,mssg_added2)
+  }
+  file_path=tmp_file
+  file_con=file(file_path,'w',encoding='utf-8')
+  writeLines(toJSON(mssg_updated,auto_unbox = TRUE),file_con)
+  close(file_con)
+}
 #' Compile prompt engineering functions
 #'
 #' Compile prompt engineering functions
