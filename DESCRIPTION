@@ -29,7 +29,8 @@ Depends:
   utils,
   readxl,
   purrr,
-  rvest
+  rvest,
+  xml2
 Imports:
   clipr,
   httr,
@@ -39,5 +40,6 @@ Imports:
   utils,
   readxl,
   purrr,
-  rvest
+  rvest,
+  xml2
 VignetteBuilder: knitr

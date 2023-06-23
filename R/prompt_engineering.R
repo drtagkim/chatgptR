@@ -68,11 +68,23 @@ pe_eng_title <- function() {
   )
 }
 
-
-pe_news_title <- function(search_query) {
-  p1="Assistant will provide news headline summary. Results should be natural descriptions."
-  p2="Sentences should be output."
-  p3="In the following news headlines contains:"
-  p4=paste0(get_gs_news_title(search_query),collapse = " ")
-  paste0(p1,p2,p3,p4,collapse=' ')
+#' Prompt Engineering Function - Reporting news summary
+#'
+#' Prompt Engineering Function - Reporting news summary
+#'
+#' @export
+#'
+pe_news_title <- function(search_query,naver_client_id=NULL,naver_client_secret=NULL) {
+  p1 = "Assistant will provide news headline summary. Results should be natural descriptions."
+  p2 = "Sentences should be output."
+  p3 = "In the following news headlines contains in Google:"
+  p4 = paste0(get_gs_news_title(search_query),collapse = " ")
+  if(!is.null(naver_client_id) & !is.null(naver_client_secret)) {
+    p5 = "And the following are news articles relating to user query in Naver:"
+    p6 = paste0(get_naver_news(search_query,naver_client_id,naver_client_secret),collapse=" ")
+  } else {
+    p5 = ""
+    p6 = ""
+  }
+  paste0(p1,p2,p3,p4,p5,p6,collapse=' ')
 }
