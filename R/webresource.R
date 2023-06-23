@@ -58,5 +58,6 @@ get_naver_news <- function(search_query,client_id,client_secret) {
       str_sub(0,200)
   })
   body[is.na(body)]=" "
-  paste(paste("News heading is :",heading,sep=' '),body,sep = ". The content is followed: ")
+  #paste(paste("News heading is :",heading,sep=' '),body,sep = ". The content is followed: ")
+  body
 }
