@@ -47,7 +47,7 @@ get_naver_news <- function(search_query,client_id,client_secret) {
   response = GET(url, query = query, add_headers(.headers=headers))
   content = content(response, "text")
   news_data = fromJSON(content[1])$items
-  heading = news_data$title %>% map_chr(function(x) html_text(read_html(x)))
+  heading = news_data$title
   body = news_data$link %>% map_chr(function(x) {
     read_html(x) %>%
       html_element("div#dic_area") %>%
@@ -58,6 +58,5 @@ get_naver_news <- function(search_query,client_id,client_secret) {
       str_sub(0,200)
   })
   body[is.na(body)]=" "
-  #paste(paste("News heading is :",heading,sep=' '),body,sep = ". The content is followed: ")
-  body
+  paste(paste("News heading is :",heading,sep=' '),body,sep = ". The content is followed: ")
 }
