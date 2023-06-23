@@ -63,6 +63,16 @@ create_session_history <- function(tmp_file) {
       bind_rows(user_dt[x,],assistant_dt[x,])
     }) %>% toJSON() %>% write(tmp_file)
 }
+write_session_history <- function(session,session_file) {
+  mssg_previous=c(fromJSON(session,simplifyDataFrame = FALSE))
+  file_path=session_file
+  file_con=file(file_path,'w',encoding='utf-8')
+  writeLines(toJSON(mssg_updated,auto_unbox = TRUE),file_con)
+  close(file_con)
+}
+load_session_history <- function(sesison_data) {
+
+}
 #' Teach GPT with session
 #'
 #' Teach GPT with session

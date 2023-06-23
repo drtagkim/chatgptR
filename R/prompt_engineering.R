@@ -16,7 +16,7 @@ pe_write_eng_sentence_based_idea <- function() {
 pe_topic_flag <- function() {
   paste0("Check whether the message provided by users ",
          "contains relevant keywords. ",
-         "value as 0(=has) or 1(=has not), ",
+         "value as 0(=has not) or 1(=has), ",
          "Results should be JSON format. ",
          "Resonse example: \"keyword\":1",
          "Keywords: ")
@@ -66,4 +66,13 @@ pe_eng_title <- function() {
     "English output",
     collapse=" "
   )
+}
+
+
+pe_news_title <- function(search_query) {
+  p1="Assistant will provide news headline summary. Results should be natural descriptions."
+  p2="Sentences should be output."
+  p3="In the following news headlines contains:"
+  p4=paste0(get_gs_news_title(search_query),collapse = " ")
+  paste0(p1,p2,p3,p4,collapse=' ')
 }

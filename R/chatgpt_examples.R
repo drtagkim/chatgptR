@@ -83,3 +83,20 @@ chat_title_news <- function(q) {
   x %>% write_clip()
   x
 }
+
+#' Get News Title Using Google Search Engine
+#'
+#' Get News Title Using Google Search Engine
+#'
+#' @param q news query
+#' @param kor if TRUE, output is in Korean, o.w., English
+#'
+#' @export
+chat_news_head <- function(q,kor=TRUE) {
+  x=ask_chatgpt(
+    paste0(q,ifelse(kor," 관련 뉴스를 요약해줘."," Summarize relevant news in English.")),
+    context=compile_prompt(list(pe_news_title(q)))
+  )
+  x %>% write_clip()
+  x
+}
