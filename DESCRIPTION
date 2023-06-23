@@ -28,7 +28,8 @@ Depends:
   jsonlite,
   utils,
   readxl,
-  purrr
+  purrr,
+  rvest
 Imports:
   clipr,
   httr,
@@ -37,5 +38,6 @@ Imports:
   jsonlite,
   utils,
   readxl,
-  purrr
+  purrr,
+  rvest
 VignetteBuilder: knitr
