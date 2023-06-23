@@ -54,7 +54,8 @@ get_naver_news <- function(search_query,client_id,client_secret) {
       html_text() %>%
       str_trim() %>%
       str_remove_all('"') %>%
-      str_remove_all("'")
+      str_remove_all("'") %>%
+      str_sub(0,500)
   })
   body[is.na(body)]=" "
   paste(paste("News heading is :",heading,sep=' '),body,sep = ". The content is followed: ")
