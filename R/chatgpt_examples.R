@@ -100,3 +100,21 @@ chat_news <- function(q,naver_client_id=NULL,naver_client_secret=NULL,kor=TRUE) 
   x %>% write_clip()
   x
 }
+
+#' Get an English citation Sentence
+#'
+#' Get an English citation Sentence
+#'
+#' @param authors authors name
+#' @param year publication year
+#' @param q query
+#'
+#' @export
+#'
+chat_citation_end <- function(authors,year,q) {
+  session=pe_citation_end()
+  p=paste0(q," By ",authros,", ", year, collapse = '')
+  x=ask_chatgpt(p,history_file=session,update=FALSE)
+  x %>% write_clip()
+  x
+}
