@@ -112,9 +112,10 @@ chat_news <- function(q,naver_client_id=NULL,naver_client_secret=NULL,kor=TRUE) 
 #' @export
 #'
 chat_citation_end <- function(authors,year,q) {
-  session=pe_citation_end()
+  session_file=pe_citation_end()
   p=paste0(q," By ",authors,", ", year, collapse = '')
-  x=ask_chatgpt(p,history_file=session,update=FALSE)
+  x=ask_chatgpt(p,history_file=session_file,update=FALSE)
   x %>% write_clip()
+  file.remove(session_file)
   x
 }

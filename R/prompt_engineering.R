@@ -96,22 +96,16 @@ pe_news_title <- function(search_query,naver_client_id=NULL,naver_client_secret=
 #' @export
 #'
 pe_citation_end <- function() {
-  session <- tempfile()
+  session = tempfile()
   create_session_history(session)
-  session %>%
-    teach_gpt(intent="Output should be in English.")
-  session %>%
-    teach_gpt(intent="Output should be one sentence.")
-  session %>%
-    teach_gpt(intent="Translate all into English")
-  session %>%
-    teach_gpt(intent="Citation should be in APA6th style.")
-  session %>%
-    teach_gpt(intent="If author names (e.g., Tom) are provided first, the sentence should starts with like Tom (1999)")
-  session %>%
+  session = session %>%
+    teach_gpt(intent="Output should be in English.") %>%
+    teach_gpt(intent="Output should be one sentence.") %>%
+    teach_gpt(intent="Translate all into English") %>%
+    teach_gpt(intent="Citation should be in APA6th style.") %>%
+    teach_gpt(intent="If author names (e.g., Tom) are provided first, the sentence should starts with like Tom (1999)") %>%
     teach_gpt(me="100,000 chatbots, created in less than year, Facebook Messenger. By Jonshon, 2017.",
-              you="Over 100,000 chatbots have been created in less than one year on Facebook Messenger alone (Johnson, 2017).")
-  session %>%
+              you="Over 100,000 chatbots have been created in less than one year on Facebook Messenger alone (Johnson, 2017).") %>%
     teach_gpt(
       me="The technology itself is frequently met with consumer skepticism as shown by market research in several European countries. By Elsner, 2017",
       you="The technology itself is frequently met with consumer skepticism as shown by market research in several European countries (Elsner, 2017)."

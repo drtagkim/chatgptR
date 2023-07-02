@@ -108,6 +108,7 @@ teach_gpt <- function(tmp_file,intent=NULL,me=NULL,you=NULL) {
   file_con=file(file_path,'w',encoding='utf-8')
   writeLines(toJSON(mssg_updated,auto_unbox = TRUE),file_con)
   close(file_con)
+  file_path
 }
 #' Compile prompt engineering functions
 #'
