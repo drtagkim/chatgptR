@@ -7,11 +7,10 @@
 #' @export
 #'
 chat_write <- function(q) {
-  x=ask_chatgpt(
-    q,
-    context=compile_prompt(list(pe_write_eng_sentence_based_idea()))
-  )
+  session_file=pe_write_eng_sentence_based_idea()
+  x=ask_chatgpt(p,history_file=session_file,update=FALSE)
   x %>% write_clip()
+  file.remove(session_file)
   x
 }
 

@@ -3,9 +3,16 @@
 #' Sentence Writer Based on Supplied Keywords
 #'
 #' @export
-pe_write_eng_sentence_based_idea <- function() {
-  paste0("I will give you a keyword and you will write 1 sentence based on it. ",
-         "Answer in English. ")
+pe_write_eng_sentence_based_idea <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Output should be in English. ") %>%
+    teach_gpt(intent="Output should be one sentence. ") %>%
+    teach_gpt(intent="Inputs are list of keywords reflecting ideas. ") %>%
+    teach_gpt(intent="Translate all into English")
 }
 
 #' Prompt Enginnering Function - Checking the inclusion of keywords
@@ -13,7 +20,7 @@ pe_write_eng_sentence_based_idea <- function() {
 #' Checking the inclusion of keywords
 #'
 #' @export
-pe_topic_flag <- function() {
+pe_topic_flag <- function(knowledge=NULL) {
   paste0("Check whether the message provided by users ",
          "contains relevant keywords. ",
          "value as 0(=has not) or 1(=has), ",
@@ -95,10 +102,12 @@ pe_news_title <- function(search_query,naver_client_id=NULL,naver_client_secret=
 #'
 #' @export
 #'
-pe_citation_end <- function() {
-  session = tempfile()
-  create_session_history(session)
-  session = session %>%
+pe_citation_end <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
     teach_gpt(intent="Output should be in English.") %>%
     teach_gpt(intent="Output should be one sentence.") %>%
     teach_gpt(intent="Translate all into English") %>%
@@ -110,5 +119,4 @@ pe_citation_end <- function() {
       me="The technology itself is frequently met with consumer skepticism as shown by market research in several European countries. By Elsner, 2017",
       you="The technology itself is frequently met with consumer skepticism as shown by market research in several European countries (Elsner, 2017)."
     )
-  session
 }

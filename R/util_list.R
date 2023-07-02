@@ -41,7 +41,7 @@ transform_excel_data_to_json <- function(input_exel,output_json) {
 #' @export
 #' @examples
 #' sesison <- tempfile()
-#' create_session_history(session)
+#' create_knowledge_repository(session)
 #' ask_chatgpt("Remember following information.",
 #'   history_file = session,
 #'   update = TRUE)
@@ -55,7 +55,7 @@ transform_excel_data_to_json <- function(input_exel,output_json) {
 #'             history_file = session,
 #'             update = TRUE)
 #' file.remove(session)
-create_session_history <- function(tmp_file) {
+create_knowledge_repository <- function(tmp_file) {
   user_dt = tibble(role="user",content="Please be my best assistant.")
   assistant_dt = tibble(role="assistant",content="I'm here to assist you to the best of my abilities!")
   1:nrow(user_dt) %>%
@@ -84,7 +84,7 @@ load_session_history <- function(sesison_data) {
 #' @export
 #' @exmaples
 #' session <- tempfile()
-#' create_session_history(session)
+#' create_knowledge_repository(session)
 #' session %>%
 #'   teach_gpt(intent = "Answer anything in one sentence")
 #' ask_chatgpt("What happen if you die?",history_file=session,update=TRUE)
