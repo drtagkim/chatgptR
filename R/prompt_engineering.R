@@ -12,7 +12,9 @@ pe_write_eng_sentence_based_idea <- function(knowledge=NULL) {
     teach_gpt(intent="Output should be in English. ") %>%
     teach_gpt(intent="Output should be one sentence. ") %>%
     teach_gpt(intent="Inputs are list of keywords reflecting ideas. ") %>%
-    teach_gpt(intent="Translate all into English")
+    teach_gpt(intent="Translate all into English") %>%
+    teach_gpt(me="metaverse, AR VR avatar important business e-commerce",
+              you="The concepts of metaverse, augmented reality (AR), virtual reality (VR), avatars, and their significance in the realm of important business e-commerce.")
 }
 
 #' Prompt Enginnering Function - Checking the inclusion of keywords
