@@ -22,13 +22,18 @@ pe_write_eng_sentence_based_idea <- function(knowledge=NULL) {
 #' Checking the inclusion of keywords
 #'
 #' @export
-pe_topic_flag <- function(knowledge=NULL) {
-  paste0("Check whether the message provided by users ",
-         "contains relevant keywords. ",
-         "value as 0(=has not) or 1(=has), ",
-         "Results should be JSON format. ",
-         "Resonse example: \"keyword\":1",
-         "Keywords: ")
+pe_topic_flag <- function(knowledge=NULL,topic_keyword="") {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Check whether the message provided by users ") %>%
+    teach_gpt(intent="contains relevant keywords. ") %>%
+    teach_gpt(intent="value as 0(=has not) or 1(=has), ") %>%
+    teach_gpt("Results should be JSON format. ") %>%
+    teach_gpt("Resonse example: \"keyword\":1") %>%
+    teach_gpt(paste0("Keywords:",topic_keyword,collapse = " "))
 }
 
 #' Prompt Enginnering Function - Editing a paragraph in academic styling
@@ -36,11 +41,16 @@ pe_topic_flag <- function(knowledge=NULL) {
 #' Editing a paragraph in academic styling
 #'
 #' @export
-pe_edit_eng_writing <- function() {
-  paste0("Edit the sentence in English. ",
-         "Write in an academic style. ",
-         "Write in an academic style. For example, suppose you're writing a social science paper. ",
-         "Answer in English. ")
+pe_edit_eng_writing <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Edit the sentence in English. ") %>%
+    teach_gpt(intent="Write in an academic style. ") %>%
+    teach_gpt(intent="Write in an academic style. For example, suppose you're writing a social science paper. ") %>%
+    teach_gpt(intent="Answer in English. ")
 }
 
 #' Prompt Engineering Function - Generate a script for Powerpoint presentation
@@ -48,19 +58,21 @@ pe_edit_eng_writing <- function() {
 #' Generate a script for Powerpoint presentation
 #'
 #' @export
-pe_eng_script_writing <- function(seconds=20) {
-  paste0(
-    "Input: words representing ideas and topics",
-    "You should translate user input into English first.",
-    "Output: English paragraph containing presentation scripts.",
-    "Suppose that a human will read it in front of academic audiance.",
-    "It should be natural, fluenct and friendly.",
-    "The output script is not in start nor in end. It is in the middle of presentatin.",
-    "Do not add information that is not provided by a user.",
-    "Keep in mind that the reading should be finished within specific duration.",
-    "For exmaple, the length of speaking will be:",seconds," seconds",
-    collapse=" "
-  )
+pe_eng_script_writing <- function(knowledge=NULL,seconds=20) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Input: words representing ideas and topics ") %>%
+    teach_gpt(intent="You should translate user input into English first. ") %>%
+    teach_gpt(intent="Output: English paragraph containing presentation scripts. ") %>%
+    teach_gpt(intent="Suppose that a human will read it in front of academic audiance. ") %>%
+    teach_gpt(intent="It should be natural, fluenct and friendly. ") %>%
+    teach_gpt(intent="The output script is not in start nor in end. It is in the middle of presentatin. ") %>%
+    teach_gpt(intent="Do not add information that is not provided by a user.") %>%
+    teach_gpt(intent="Keep in mind that the reading should be finished within specific duration.") %>%
+    teach_gpt(intent=paste0("For exmaple, the length of speaking will be:",seconds," seconds",collapse=" "))
 }
 
 #' Prompt Engineering Function - Generating a news title in English
@@ -69,12 +81,15 @@ pe_eng_script_writing <- function(seconds=20) {
 #'
 #'
 #' @export
-pe_eng_title <- function() {
-  paste0(
-    "Make a news title based on the input.",
-    "English output",
-    collapse=" "
-  )
+pe_eng_title <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Make a news title based on the input. ") %>%
+    teach_gpt(intent="One sentence ") %>%
+    teach_gpt(intent="Translate the output into English. ")
 }
 
 #' Prompt Engineering Function - Reporting news summary

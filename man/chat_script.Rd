@@ -8,6 +8,8 @@ chat_script(q, sec = 30)
 }
 \arguments{
 \item{q}{keywords}
+
+\item{sec}{length measured in seconds (default = 30 seconds)}
 }
 \description{
 Writing a sentence based on keywords supplied.

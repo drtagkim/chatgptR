@@ -4,7 +4,7 @@
 \alias{pe_edit_eng_writing}
 \title{Prompt Enginnering Function - Editing a paragraph in academic styling}
 \usage{
-pe_edit_eng_writing()
+pe_edit_eng_writing(knowledge = NULL)
 }
 \description{
 Editing a paragraph in academic styling

@@ -7,28 +7,27 @@
 #' @export
 #'
 chat_write <- function(q) {
-  session_file=pe_write_eng_sentence_based_idea()
-  x=ask_chatgpt(q,history_file=session_file,update=FALSE)
+  knowledge=pe_write_eng_sentence_based_idea()
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x %>% write_clip()
-  file.remove(session_file)
+  file.remove(knowledge)
   x
 }
-
 
 #' Script Writer
 #'
 #' Writing a sentence based on keywords supplied.
 #'
 #' @param q keywords
+#' @param sec length measured in seconds (default = 30 seconds)
 #'
 #' @export
 #'
 chat_script <- function(q,sec=30) {
-  x=ask_chatgpt(
-    q,
-    context=compile_prompt(list(pe_eng_script_writing(sec)))
-  )
+  knowledge=pe_eng_script_writing(NULL,sec)
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x %>% write_clip()
+  file.remove(knowledge)
   x
 }
 
@@ -40,11 +39,10 @@ chat_script <- function(q,sec=30) {
 #'
 #' @export
 chat_edit_writing <- function(q) {
-  x=ask_chatgpt(
-    q,
-    context=compile_prompt(list(pe_edit_eng_writing()))
-  )
+  knowledge=pe_edit_eng_writing()
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x %>% write_clip()
+  file.remove(knowledge)
   x
 }
 
@@ -57,12 +55,10 @@ chat_edit_writing <- function(q) {
 #'
 #' @export
 chat_topic_check <- function(q,topic_keyword) {
-  x=ask_chatgpt(
-    q,
-    context=compile_prompt(list(pe_topic_flag(),
-              paste0(topic_keyword,collapse = ",")))
-  )
+  knowledge=pe_topic_flag(NULL,topic_keyword)
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x %>% write_clip()
+  file.remove(knowledge)
   x
 }
 
@@ -74,12 +70,10 @@ chat_topic_check <- function(q,topic_keyword) {
 #'
 #' @export
 chat_title_news <- function(q) {
-  x=ask_chatgpt(
-    q,
-    context=compile_prompt(list(pe_eng_title(),
-              paste0(topic_keyword,collapse = ",")))
-  )
+  knowledge=pe_eng_title()
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x %>% write_clip()
+  file.remove(knowledge)
   x
 }
 

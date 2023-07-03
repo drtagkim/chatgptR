@@ -4,7 +4,7 @@
 \alias{pe_eng_title}
 \title{Prompt Engineering Function - Generating a news title in English}
 \usage{
-pe_eng_title()
+pe_eng_title(knowledge = NULL)
 }
 \description{
 Prompt Engineering Function - Generating a news title in English
