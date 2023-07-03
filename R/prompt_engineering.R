@@ -35,7 +35,8 @@ pe_topic_flag <- function(knowledge=NULL,topic_keyword="") {
     teach_gpt("Resonse example: \"keyword\":1") %>%
     teach_gpt("Resonse example: \"keyword\":0") %>%
     teach_gpt(paste0("Keyword:",topic_keyword,collapse = " ")) %>%
-    teach_gpt("You should check whether each keyword is included or not. ")
+    teach_gpt("You should check whether each keyword is included or not. ") %>%
+    teach_gpt("For example, suppose the sentence has words like A, B, C, D. If keywords are A, B and F, then A:1, B:1, F:0 ")
 }
 
 #' Prompt Enginnering Function - Editing a paragraph in academic styling
