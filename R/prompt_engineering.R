@@ -29,11 +29,13 @@ pe_topic_flag <- function(knowledge=NULL,topic_keyword="") {
   }
   knowledge %>%
     teach_gpt(intent="Check whether the message provided by users ") %>%
-    teach_gpt(intent="contains relevant keywords. ") %>%
-    teach_gpt(intent="value as 0(=has not) or 1(=has), ") %>%
+    teach_gpt(intent="Contains relevant keywords. ") %>%
+    teach_gpt(intent="Value as 0(=has not) or 1(=has), ") %>%
     teach_gpt("Results should be JSON format. ") %>%
     teach_gpt("Resonse example: \"keyword\":1") %>%
-    teach_gpt(paste0("Keywords:",topic_keyword,collapse = " "))
+    teach_gpt("Resonse example: \"keyword\":0") %>%
+    teach_gpt(paste0("Keyword:",topic_keyword,collapse = " ")) %>%
+    teach_gpt("You should check whether each keyword is included or not. ")
 }
 
 #' Prompt Enginnering Function - Editing a paragraph in academic styling
