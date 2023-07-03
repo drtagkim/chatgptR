@@ -4,7 +4,7 @@
 \alias{pe_topic_flag}
 \title{Prompt Enginnering Function - Checking the inclusion of keywords}
 \usage{
-pe_topic_flag()
+pe_topic_flag(knowledge = NULL)
 }
 \description{
 Checking the inclusion of keywords

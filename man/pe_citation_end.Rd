@@ -4,7 +4,7 @@
 \alias{pe_citation_end}
 \title{Prompt Engineering Function - Citation at the end of a sentence}
 \usage{
-pe_citation_end()
+pe_citation_end(knowledge = NULL)
 }
 \description{
 Prompt Engineering Function - Citation at the end of a sentence

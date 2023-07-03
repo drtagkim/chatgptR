@@ -4,7 +4,7 @@
 \alias{pe_write_eng_sentence_based_idea}
 \title{Prompt Enginnering Function - Sentence Writer Based on Supplied Keywords}
 \usage{
-pe_write_eng_sentence_based_idea()
+pe_write_eng_sentence_based_idea(knowledge = NULL)
 }
 \description{
 Sentence Writer Based on Supplied Keywords
