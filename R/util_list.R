@@ -104,6 +104,14 @@ teach_gpt <- function(tmp_file,intent=NULL,me=NULL,you=NULL) {
     mssg_added2=list(list(role="assistant",content = you))
     mssg_updated=append_lists(mssg_previous,mssg_added1,mssg_added2)
   }
+  if(is.null(intent) & !is.null(me) & is.null(you)) {
+    mssg_added1=list(list(role="user",content = me))
+    mssg_updated=append_lists(mssg_previous,mssg_added1)
+  }
+  if(is.null(intent) & is.null(me) & !is.null(you)) {
+    mssg_added2=list(list(role="assistant",content = you))
+    mssg_updated=append_lists(mssg_previous,mssg_added2)
+  }
   file_path=tmp_file
   file_con=file(file_path,'w',encoding='utf-8')
   writeLines(toJSON(mssg_updated,auto_unbox = TRUE),file_con)
