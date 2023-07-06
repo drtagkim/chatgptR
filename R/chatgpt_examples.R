@@ -38,8 +38,12 @@ chat_script <- function(q,sec=30) {
 #' @param q writing content
 #'
 #' @export
-chat_edit_writing <- function(q) {
-  knowledge=pe_edit_eng_writing()
+chat_edit_writing <- function(q,eng=TRUE) {
+  if(eng) {
+    knowledge=pe_edit_eng_writing()
+  } else {
+    knowledge=pe_edit_kor_writing()
+  }
   x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x %>% write_clip()
   file.remove(knowledge)

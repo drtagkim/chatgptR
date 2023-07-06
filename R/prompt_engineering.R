@@ -56,6 +56,23 @@ pe_edit_eng_writing <- function(knowledge=NULL) {
     teach_gpt(intent="Answer in English. ")
 }
 
+#' Prompt Enginnering Function - Editing a paragraph in academic styling (Korean)
+#'
+#' Editing a paragraph in academic styling (Korean)
+#'
+#' @export
+pe_edit_kor_writing <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Edit the sentence in Korean. ") %>%
+    teach_gpt(intent="Write in an academic style. ") %>%
+    teach_gpt(intent="Write in an academic style. For example, suppose you're writing a social science paper. ") %>%
+    teach_gpt(intent="Answer in Korean. ")
+}
+
 #' Prompt Engineering Function - Generate a script for Powerpoint presentation
 #'
 #' Generate a script for Powerpoint presentation

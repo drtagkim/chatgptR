@@ -4,7 +4,7 @@
 \alias{chat_edit_writing}
 \title{Edit writing}
 \usage{
-chat_edit_writing(q)
+chat_edit_writing(q, eng = TRUE)
 }
 \arguments{
 \item{q}{writing content}
