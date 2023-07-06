@@ -14,7 +14,19 @@ pe_write_eng_sentence_based_idea <- function(knowledge=NULL) {
     teach_gpt(intent="Inputs are list of keywords reflecting ideas. ") %>%
     teach_gpt(intent="Translate all into English") %>%
     teach_gpt(me="metaverse, AR VR avatar important business e-commerce",
-              you="The concepts of metaverse, augmented reality (AR), virtual reality (VR), avatars, and their significance in the realm of important business e-commerce.")
+              you="The concepts of metaverse, augmented reality (AR), virtual reality (VR), avatars, and their significance in the realm of important business e-commerce.") %>%
+    teach_gpt(me="assessed, standard measures, influence, citation count and impact factor, ranks, disciplines",
+              you="In fact, when assessed with standard measures of academic influence such as citation count and impact factor, the field ranks equivalent to or above many traditional management disciplines.") %>%
+    teach_gpt(me="there is evidence that continuing our current approach toward borrowing is having unintended consequences and our knowledge products often fail to engage with the IS artifact in novel ways. ",
+              you="there is evidence that continuing our current approach toward borrowing is having unintended consequences and our knowledge products often fail to engage with the IS artifact in novel ways. ") %>%
+    teach_gpt(me="As we will show, the field’s theory borrowing has been uncritical, largely retesting borrowed social, psychological, organizational, or economic theories in the IS context without rendering new theoretical insight or deeply engaging with IS-specific phenomena. ",
+              you="As we will show, the field’s theory borrowing has been uncritical, largely retesting borrowed social, psychological, organizational, or economic theories in the IS context without rendering new theoretical insight or deeply engaging with IS-specific phenomena. ") %>%
+    teach_gpt(me="The implications of such practices are that we relegate a large portion of our knowledge contribution to external disciplines that have little interest in or concern for the idiosyncrasies of IS phenomena.",
+              you="The implications of such practices are that we relegate a large portion of our knowledge contribution to external disciplines that have little interest in or concern for the idiosyncrasies of IS phenomena.") %>%
+    teach_gpt(me="It is our contention that the status quo regarding the field’s borrowing practices is neither helpful nor productive in describing an increasingly digital landscape that continues to evolve.",
+              you="It is our contention that the status quo regarding the field’s borrowing practices is neither helpful nor productive in describing an increasingly digital landscape that continues to evolve.") %>%
+    teach_gpt(me="That is, as we seek new modes of innovative theorizing, let us also correct our posture toward borrowing and seek inspiration from the vast repositories of theoretical knowledge found in other fields.",
+              you="That is, as we seek new modes of innovative theorizing, let us also correct our posture toward borrowing and seek inspiration from the vast repositories of theoretical knowledge found in other fields.")
 }
 
 #' Prompt Enginnering Function - Checking the inclusion of keywords
@@ -72,8 +84,7 @@ pe_edit_kor_writing <- function(knowledge=NULL) {
     teach_gpt(intent="Write in an academic style. For example, suppose you're writing a social science paper. ") %>%
     teach_gpt(intent="Answer in Korean. ") %>%
     teach_gpt(intent="Just show me output result only. ") %>%
-    teach_gpt(you="현재 기술적인 경험을 이해하는 데 중요하다. ") %>%
-    teach_gpt(you="환경에서 도입되고 활용되고 있다. ")
+    teach_gpt(intent="In Korean, the end of sentence should be ~이다 Not ~입니다.")
 }
 
 #' Prompt Engineering Function - Generate a script for Powerpoint presentation

@@ -136,6 +136,8 @@ compile_prompt <- function(pe_list) {
 #'
 #' @export
 `%>>%` <- function(a,b) {
-  paste0(a,' ',b)
+  x=paste0(a,' ',b)
+  clipr::write_clip(x)
+  x
 }
 
