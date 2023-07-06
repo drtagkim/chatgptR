@@ -72,8 +72,8 @@ pe_edit_kor_writing <- function(knowledge=NULL) {
     teach_gpt(intent="Write in an academic style. For example, suppose you're writing a social science paper. ") %>%
     teach_gpt(intent="Answer in Korean. ") %>%
     teach_gpt(intent="Just show me output result only. ") %>%
-    teach_gpt(me=".", you="현재 기술적인 경험을 이해하는 데 중요하다. ") %>%
-    teach_gpt(me=".", you="환경에서 도입되고 활용되고 있다. ")
+    teach_gpt(you="현재 기술적인 경험을 이해하는 데 중요하다. ") %>%
+    teach_gpt(you="환경에서 도입되고 활용되고 있다. ")
 }
 
 #' Prompt Engineering Function - Generate a script for Powerpoint presentation
