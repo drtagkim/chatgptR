@@ -31,7 +31,8 @@ Depends:
   purrr,
   rvest,
   xml2,
-  knitr
+  knitr,
+  rmarkdown
 Imports:
   clipr,
   httr,
@@ -43,5 +44,6 @@ Imports:
   purrr,
   rvest,
   xml2,
-  knitr
+  knitr,
+  rmarkdown
 VignetteBuilder: knitr
