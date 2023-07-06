@@ -121,3 +121,13 @@ compile_prompt <- function(pe_list) {
   p=paste0(pe_list,collapse = " ")
   p
 }
+
+#' Chat Operator: Concatenate conversation output
+#'
+#' Chat Operator: Concatenate conversation output
+#'
+#' @export
+`%>>%` <- function(a,b) {
+  paste0(a,' ',b)
+}
+
