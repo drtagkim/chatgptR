@@ -221,3 +221,25 @@ pe_citation_end <- function(knowledge=NULL) {
       you="The technology itself is frequently met with consumer skepticism as shown by market research in several European countries (Elsner, 2017)."
     )
 }
+#' Article File Rename
+#'
+#' Article File Rename
+#'
+#' @export
+pe_rename_article_file_name <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="rename a file name(=input).") %>%
+    teach_gpt(intent="your output is just a name string, not including a file extension.") %>%
+    teach_gpt(me="McKnight, D. H., Choudhury, V., & Kacmar, C. (2002). Developing and validating trust measures for e-commerce: An integrative typology. Information systems research, 13(3), 334-359.",
+              you="McKnight_etal(2002)_Information systems research_developing-and-validating-trust") %>%
+    teach_gpt(me="Zhu, K., & Kraemer, K. L. (2002). E-commerce metrics for net-enhanced organizations: Assessing the value of e-commerce to firm performance in the manufacturing sector. Information systems research, 13(3), 275-295.",
+              you="Zhu_Kraemer(2002)_Information systems research_e-commerce-metrics-for-ent-enhanced") %>%
+    teach_gpt(me="Chatterjee, D., Grewal, R., & Sambamurthy, V. (2002). Shaping up for e-commerce: institutional enablers of the organizational assimilation of web technologies. MIS quarterly, 65-89.",
+              you="Chatterjee_etal(2002)_MIS quarterly_shaping-up-for-e-commerce") %>%
+    teach_gpt(me="Xiao, B., & Benbasat, I. (2011). Product-related deception in e-commerce: A theoretical perspective. Mis Quarterly, 169-195.",
+              you="Xiao_Benbasat(2011)_Mis Quarterly_product-related-deception-in-e-commerce")
+}

@@ -116,3 +116,18 @@ chat_citation_end <- function(authors,year,q) {
   file.remove(session_file)
   x
 }
+
+#' Rename Article File Name
+#'
+#' Rename Article File Name
+#'
+#' @param citation apa6th citation
+#'
+#' @export
+chat_apa_rename <- function(citation) {
+  knowledge=pe_rename_article_file_name()
+  x=ask_chatgpt(citation,history_file=knowledge,update=FALSE)
+  x %>% write_clip()
+  file.remove(knowledge)
+  x
+}
