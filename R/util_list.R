@@ -140,4 +140,15 @@ compile_prompt <- function(pe_list) {
   clipr::write_clip(x)
   x
 }
-
+#' Get Wikipedia Text
+#'
+#' Get Wikipedia Text
+#'
+#' @param url Wikipedia URL
+#'
+#' @export
+get_wiki <- function(url) {
+  r1=read_html(url) %>% html_elements('p') %>% html_text2()
+  r2=paste0(r1,collapse=' ')
+  str_sub(r2,1,1000)
+}
