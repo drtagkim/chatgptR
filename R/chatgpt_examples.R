@@ -146,3 +146,18 @@ chat_get_keywords <- function(q) {
   file.remove(knowledge)
   x
 }
+
+#' Generating a Topic Sentence
+#'
+#' Generating a Topic Sentence
+#'
+#' @param q sentence
+#'
+#' @export
+chat_topic <- function(q) {
+  knowledge=pe_get_topic_sentece()
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
+  x %>% write_clip()
+  file.remove(knowledge)
+  x
+}

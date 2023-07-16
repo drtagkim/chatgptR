@@ -41,7 +41,9 @@ pe_write_eng_sentence_based_idea <- function(knowledge=NULL) {
     teach_gpt(me="확장, 이전 OHC 연구, 관점, 정서적 지원, 필요한, 고용, 정서적 전염 이론, 설명하다, 정서적 영향, OHCs.",
               you="Extending previous OHC studies from the perspective of emotional support, we consider it necessary to employ emotional contagion theory to explain the emotional impact of OHCs.") %>%
     teach_gpt(me="정서적 전염, 컴퓨터 매개 커뮤니케이션, 인스턴트 메시징, Hancock et al., 2008",
-              you="Recently, emotional contagion has also been found in computer-mediated communication, such as instant messaging (Hancock et al., 2008).")
+              you="Recently, emotional contagion has also been found in computer-mediated communication, such as instant messaging (Hancock et al., 2008).") %>%
+    teach_gpt(me="제한된 연구, 유형, 소셜 미디어, 공부, 감정적 인 전염, 정서적 인 전염",
+              you="There was limited research on this type of social media when studying emotional contagion. ")
 }
 
 #' Prompt Enginnering Function - Checking the inclusion of keywords
@@ -224,4 +226,21 @@ pe_extract_keywords_ideas <- function(knowledge=NULL) {
     teach_gpt(intent="Extracting key ideas and keywords in the sentence.") %>%
     teach_gpt(intent="Combining results with commans.") %>%
     teach_gpt(intent="Results should be only consisted of words and commas.")
+}
+#' Prompt Engineering - Generating a Topic Sentence
+#'
+#' Prompt Engineering - Generating a Topic Sentence
+#'
+#' @export
+#'
+pe_get_topic_sentece <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Read what the user presents and generate topic sentences.") %>%
+    teach_gpt(intent="Present the result as a single sentence in English.") %>%
+    teach_gpt(intent="It does not print quotation marks or punctuation to indicate a quote.") %>%
+    teach_gpt(intent="The creativity of the topic sentence you output should be around 0.7 on a scale of 0 (=not creative) to 1 (=very creative).")
 }
