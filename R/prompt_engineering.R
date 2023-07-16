@@ -242,6 +242,8 @@ pe_get_topic_sentece <- function(knowledge=NULL) {
     teach_gpt(intent="Read what the user presents and generate topic sentences.") %>%
     teach_gpt(intent="Present the result as a single sentence in English.") %>%
     teach_gpt(intent="It does not print quotation marks or punctuation to indicate a quote.") %>%
-    teach_gpt(intent="The creativity of the topic sentence you output should be around 0.7 on a scale of 0 (=not creative) to 1 (=very creative).") %>%
-    teach_gpt(intent="Suggest me just one best result.")
+    teach_gpt(intent="The result should be consisted only one sentence.") %>%
+    teach_gpt(intent="The result should be simple and easy to understand.") %>%
+    teach_gpt(me="Summarize and create a topic sentence about the following paragraph. Can you?",you="Yes.")
+
 }
