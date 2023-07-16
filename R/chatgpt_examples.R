@@ -73,7 +73,7 @@ chat_topic_check <- function(q,topic_keyword) {
 #' @param q content
 #'
 #' @export
-chat_title_news <- function(q) {
+chat_title <- function(q) {
   knowledge=pe_eng_title()
   x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x %>% write_clip()
@@ -127,6 +127,21 @@ chat_citation_end <- function(authors,year,q) {
 chat_apa_rename <- function(citation) {
   knowledge=pe_rename_article_file_name()
   x=ask_chatgpt(citation,history_file=knowledge,update=FALSE)
+  x %>% write_clip()
+  file.remove(knowledge)
+  x
+}
+
+#' Extracting Keywords
+#'
+#' Extracting Keywords
+#'
+#' @param q sentence
+#'
+#' @export
+chat_get_keywords <- function(q) {
+  knowledge=pe_extract_keywords_ideas()
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x %>% write_clip()
   file.remove(knowledge)
   x
