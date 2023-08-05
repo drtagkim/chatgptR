@@ -152,3 +152,23 @@ get_wiki <- function(url) {
   r2=paste0(r1,collapse=' ')
   str_sub(r2,1,1000)
 }
+
+#' Setting GPT
+#'
+#' @export
+#'
+init_gpt <- function() {
+  OPENAI_API_KEY_file = readline("Give me a file name for setting API Key:")
+  Sys.setenv(OPENAI_API_KEY=readLines(OPENAI_API_KEY_file))
+  cat("==============\n")
+  cat("1 GPT 3.5\n")
+  cat("2 GPT 3.5 16K \n")
+  v1=readline("$ ")
+  if(v1=="1") {
+    Sys.setenv(OPENAI_MODEL="gpt-3.5-turbo")
+  } else {
+    Sys.setenv(OPENAI_MODEL="gpt-3.5-turbo-16k")
+  }
+  t0=as.numeric(readline("0----1 temperature>"))
+  Sys.setenv(OPENAI_TEMPERATURE = t0)
+}
