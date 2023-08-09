@@ -171,4 +171,5 @@ init_gpt <- function() {
   }
   t0=as.numeric(readline("0----1 temperature>"))
   Sys.setenv(OPENAI_TEMPERATURE = t0)
+  Sys.setenv(OPENAI_VERBOSE=FALSE)
 }
