@@ -36,10 +36,10 @@ qp <- function(input_fname,par_no) {
   output = unique(df$paragraph) %>%
     map(function(par_id) {
       df1=df %>% filter(paragraph == par_id)
-      result=character(nrow(df))
-      for(i in 1:nrow(df)) {
+      result=character(nrow(df1))
+      for(i in 1:nrow(df1)) {
         cat("[",i,"] Call GPT...")
-        result[i]=process_writer(df[i,])
+        result[i]=process_writer(df1[i,])
         cat("OK.\n")
       }
       chat_edit_writing(paste0(result,collapse = ' '))
