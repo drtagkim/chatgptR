@@ -35,6 +35,7 @@ qp <- function(input_fname,par_no) {
     filter(paragraph %in% par_no)
   output = unique(df$paragraph) %>%
     map(function(par_id) {
+      cat("Starting ---- ",par_id," ---\n")
       df1=df %>% filter(paragraph == par_id)
       result=character(nrow(df1))
       for(i in 1:nrow(df1)) {
@@ -42,7 +43,10 @@ qp <- function(input_fname,par_no) {
         result[i]=process_writer(df1[i,])
         cat("OK.\n")
       }
-      chat_edit_writing(paste0(result,collapse = ' '))
+      cat("Editing...")
+      result1=chat_edit_writing(paste0(result,collapse = ' '))
+      cat("OK.\n")
+      result1
     })
   output_fname = paste0("out_",input_fname)
   writexl::write_xlsx(tibble(
