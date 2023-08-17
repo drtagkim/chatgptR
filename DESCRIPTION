@@ -32,7 +32,8 @@ Depends:
   rvest,
   xml2,
   knitr,
-  rmarkdown
+  rmarkdown,
+  writexl
 Imports:
   clipr,
   httr,
@@ -45,5 +46,6 @@ Imports:
   rvest,
   xml2,
   knitr,
-  rmarkdown
+  rmarkdown,
+  writexl
 VignetteBuilder: knitr
