@@ -48,6 +48,6 @@ qp <- function(input_fname,par_no) {
   writexl::write_xlsx(tibble(
     paragraph_number=1:length(output),
     text=unlist(output)
-  ))
+  ),output_fname)
   cat("Writing completed. \n")
 }
