@@ -49,5 +49,5 @@ qp <- function(input_fname,par_no) {
     paragraph_number=1:length(output),
     text=unlist(output)
   ))
-  cat("Writing completed.\n")
+  cat("Writing completed. \n")
 }
