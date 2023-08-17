@@ -30,7 +30,9 @@ process_writer <- function(row1) {
 #'
 #' @export
 qp <- function(input_fname,par_no) {
-  df = readxl::read_excel(input_fname) %>% filter(paragraph %in% par_no)
+  df = readxl::read_excel(input_fname) %>%
+    mutate(paragraph=as.numeric(paragraph)) %>%
+    filter(paragraph %in% par_no)
   output = unique(df$paragraph) %>%
     map(function(par_id) {
       df1=df %>% filter(paragraph == par_id)
