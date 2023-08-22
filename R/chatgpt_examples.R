@@ -147,6 +147,33 @@ chat_get_keywords <- function(q) {
   x
 }
 
+#' Extracting Keywords - textrank
+#'
+#' Extracting Keywords
+#'
+#' @param q sentence
+#'
+#' @export
+chat_get_keywords_textrank <- function(q) {
+  knowledge=pe_extract_keywords_ideas()
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
+  x=x %>%
+    str_remove(fixed("Keywords: ")) %>%
+    str_split(",") %>% .[[1]] %>%
+    str_split(fixed("("),simplify = TRUE) %>%
+    as.data.frame() %>%
+    mutate(V2=str_extract(V2,"[2-3]+")) %>%
+    na.omit() %>%
+    mutate(V1=str_remove(V1,fixed("\n"))) %>%
+    mutate(V1=str_trim(V1)) %>%
+    mutate(V2=as.numeric(V2)) %>%
+    arrange(desc(V2))
+  file.remove(knowledge)
+  names(x)=c("keyword","importance")
+  x
+}
+
+
 #' Generating a Topic Sentence
 #'
 #' Generating a Topic Sentence

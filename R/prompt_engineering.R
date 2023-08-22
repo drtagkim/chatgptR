@@ -247,3 +247,27 @@ pe_get_topic_sentece <- function(knowledge=NULL) {
     teach_gpt(me="Summarize and create a topic sentence about the following paragraph. Can you?",you="Yes.")
 
 }
+
+#' Prompt Engineering - text rank
+#'
+#' Prompt Engineering - text rank
+#'
+#' @export
+#'
+pe_textrank_idea <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Analyze text to extract keywords based on textrank.") %>%
+    #teach_gpt(intent="Combining results with commans.") %>%
+    #teach_gpt(intent="Results should be only consisted of words and commas.") %>%
+    teach_gpt(intent="Just give me keywords and its importance in three levels, such as 3(=highest),2,1") %>%
+    teach_gpt(intent="Do not show me results below 2 of importance.") %>%
+    teach_gpt(intent="Get top 5 keywords only.") %>%
+    teach_gpt(intent="keywords should be NOUN or ADJ.") %>%
+    teach_gpt(intent="Sort the results in descending order based on importance.") %>%
+    teach_gpt(me="word word word word word word word word") %>%
+    teach_gpt(you="keywords (3), keywords (3), keywords (3), keywords (2), keywords (2)")
+}
