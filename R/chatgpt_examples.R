@@ -155,7 +155,7 @@ chat_get_keywords <- function(q) {
 #'
 #' @export
 chat_get_keywords_textrank <- function(q) {
-  knowledge=pe_extract_keywords_ideas()
+  knowledge=pe_textrank_idea()
   x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
   x=x %>%
     str_remove(fixed("Keywords: ")) %>%
