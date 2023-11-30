@@ -147,6 +147,21 @@ chat_get_keywords <- function(q) {
   x
 }
 
+#' Extracting Keywords - textrank
+#'
+#' Extracting Keywords
+#'
+#' @param q sentence
+#'
+#' @export
+chat_get_keywords_textrank <- function(q) {
+  knowledge=pe_textrank_idea()
+  x=ask_chatgpt(q,history_file=knowledge,update=FALSE)
+  x %>% write_clip()
+  x
+}
+
+
 #' Generating a Topic Sentence
 #'
 #' Generating a Topic Sentence

@@ -247,3 +247,18 @@ pe_get_topic_sentece <- function(knowledge=NULL) {
     teach_gpt(me="Summarize and create a topic sentence about the following paragraph. Can you?",you="Yes.")
 
 }
+
+#' Prompt Engineering - text rank
+#'
+#' Prompt Engineering - text rank
+#'
+#' @export
+#'
+pe_textrank_idea <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+    teach_gpt(intent="Analyze text to extract keywords based on textrank.")
+}
