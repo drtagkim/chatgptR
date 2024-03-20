@@ -262,3 +262,14 @@ pe_textrank_idea <- function(knowledge=NULL) {
   knowledge %>%
     teach_gpt(intent="Analyze text to extract keywords based on textrank.")
 }
+
+#'
+#'
+pe_emotion_keywords <- function(knowledge=NULL) {
+  if(is.null(knowledge)) {
+    knowledge = tempfile()
+    create_knowledge_repository(knowledge)
+  }
+  knowledge %>%
+
+}
